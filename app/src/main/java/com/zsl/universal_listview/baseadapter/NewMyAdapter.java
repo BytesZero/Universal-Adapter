@@ -12,11 +12,10 @@ import com.zsl.universal_listview.entity.UserEntity;
 import java.util.List;
 
 /**
- * BaseAdapter
+ * NewMyAdapter
  * Created by zsl on 15/5/19
  */
 public class NewMyAdapter extends UniversalAdapter<UserEntity> {
-
 
     public NewMyAdapter(Context context, List<UserEntity> datas) {
         super(context, datas,R.layout.listview_item);
@@ -41,7 +40,5 @@ public class NewMyAdapter extends UniversalAdapter<UserEntity> {
                 userEntity.setIsCheck(cb.isChecked());
             }
         });
-
-
     }
 }

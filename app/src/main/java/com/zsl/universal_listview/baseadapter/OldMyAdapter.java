@@ -16,6 +16,7 @@ import com.zsl.universal_listview.entity.UserEntity;
 import java.util.List;
 
 /**
+ * OldMyAdapter
  * Created by zsl on 15/5/20.
  */
 public class OldMyAdapter extends BaseAdapter {
