@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
-
-import com.zsl.universal_listview.R;
 
 import java.util.List;
 
@@ -19,11 +16,19 @@ public abstract class UniversalAdapter<T> extends BaseAdapter {
     protected Context context;
     protected List<T> mlists;
     protected LayoutInflater mInflater;
+    int layoutId;
 
 
-    public UniversalAdapter(Context context, List<T> mlists) {
+    /**
+     * 通用的Adapter
+     * @param context 上下文
+     * @param mlists 数据集
+     * @param layoutId item  布局视图
+     */
+    public UniversalAdapter(Context context, List<T> mlists,int layoutId) {
         this.context = context;
         this.mlists = mlists;
+        this.layoutId=layoutId;
         mInflater=LayoutInflater.from(context);
     }
 
@@ -44,7 +49,7 @@ public abstract class UniversalAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        ViewHolder holder=ViewHolder.get(context,convertView,parent, R.layout.listview_item,position);
+        ViewHolder holder=ViewHolder.get(context,convertView,parent, layoutId);
         convert(holder,getItem(position));
         return holder.getmConvertView();
     }

@@ -17,20 +17,18 @@ import com.koushikdutta.ion.Ion;
  */
 public class ViewHolder {
     private SparseArray<View> mViews;
-    private int mPosition;
     private View mConvertView;
     private Context mContext;
 
     /**
      * 初始化ViewHolder
-     * @param context
-     * @param parent
-     * @param layoutId
-     * @param position
+     * @param context  上下文
+     * @param parent 父视图
+     * @param layoutId Item layout
+     *
      */
-    public ViewHolder(Context context, ViewGroup parent, int layoutId, int position) {
+    public ViewHolder(Context context, ViewGroup parent, int layoutId) {
         this.mContext=context;
-        this.mPosition=position;
         this.mViews=new SparseArray<View>();
         mConvertView= LayoutInflater.from(context).inflate(layoutId,parent,false);
         //设置Tag
@@ -39,16 +37,15 @@ public class ViewHolder {
 
     /**
      * 获得到ViewHolder
-     * @param context
-     * @param convertView
-     * @param parent
-     * @param layoutId
-     * @param position
-     * @return
+     * @param context 上下文
+     * @param convertView convertView
+     * @param parent 父视图
+     * @param layoutId Item layout
+     * @return 返回ViewHolder对象
      */
-    public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
+    public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId) {
         if (convertView == null) {
-            return new ViewHolder(context, parent, layoutId, position);
+            return new ViewHolder(context, parent, layoutId);
         }else{
             return (ViewHolder) convertView.getTag();
         }
@@ -56,9 +53,9 @@ public class ViewHolder {
 
     /**
      * 获得到控件
-     * @param viewId
-     * @param <T>
-     * @return
+     * @param viewId item layout 中控件的id
+     * @param <T>  范型
+     * @return 范型View
      */
 
     public <T extends View> T getView(int viewId){
@@ -72,7 +69,7 @@ public class ViewHolder {
 
     /**
      * 获得到convertView
-     * @return
+     * @return convertView
      */
     public View getmConvertView() {
         return mConvertView;
@@ -80,9 +77,9 @@ public class ViewHolder {
 
     /**
      * 设置TextView的文本
-     * @param viewId
-     * @param text
-     * @return
+     * @param viewId item layout 中TextView的id
+     * @param text 文本内容
+     * @return ViewHolder
      */
     public ViewHolder setText(int viewId,String text){
         TextView textView=getView(viewId);
@@ -93,21 +90,22 @@ public class ViewHolder {
     /**
      * 通过url设置ImageView 的图片
      * 这里可以修改为自己的图片加载库
-     * @param viewId
-     * @param url
-     * @return
+     * @param viewId item layout 中ImageView的id
+     * @param url 图片的url
+     * @return ViewHolder
      */
     public ViewHolder setImage(int viewId,String url){
         ImageView imageView=getView(viewId);
+        //这里可以修改为自己的图片加载库
         Ion.with(mContext).load(url).intoImageView(imageView);
         return this;
     }
 
     /**
      * 通过ResourceId设置ImageView 的图片
-     * @param viewId
-     * @param resourceId
-     * @return
+     * @param viewId item layout 中ImageView的id
+     * @param resourceId 图片资源文件的id
+     * @return ViewHolder
      */
     public ViewHolder setImageResource(int viewId,int resourceId){
         ImageView imageView=getView(viewId);
@@ -117,9 +115,9 @@ public class ViewHolder {
 
     /**
      * 通过bitmap 设置ImageView 的图片
-     * @param viewId
-     * @param bitmap
-     * @return
+     * @param viewId item layout 中ImageView的id
+     * @param bitmap bitmap
+     * @return ViewHolder
      */
     public ViewHolder setImageBitmap(int viewId,Bitmap bitmap){
         ImageView imageView=getView(viewId);
@@ -127,6 +125,10 @@ public class ViewHolder {
         return this;
     }
 
+
+    /**
+     * ==============下边可以写自己的控件的实现，参考上边的ImageView================
+     */
 
 
 
