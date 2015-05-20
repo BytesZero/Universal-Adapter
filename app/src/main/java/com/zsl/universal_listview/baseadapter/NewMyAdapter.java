@@ -15,10 +15,10 @@ import java.util.List;
  * BaseAdapter
  * Created by zsl on 15/5/19
  */
-public class MyBaseAdapter extends UniversalAdapter<UserEntity> {
+public class NewMyAdapter extends UniversalAdapter<UserEntity> {
 
 
-    public MyBaseAdapter(Context context, List<UserEntity> datas) {
+    public NewMyAdapter(Context context, List<UserEntity> datas) {
         super(context, datas,R.layout.listview_item);
     }
 

@@ -8,5 +8,5 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_lv_show" />
+        android:id="@+id/new_lv_show" />
 </LinearLayout>
