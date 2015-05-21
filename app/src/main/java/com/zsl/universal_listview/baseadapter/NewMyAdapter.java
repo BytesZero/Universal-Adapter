@@ -1,6 +1,7 @@
 package com.zsl.universal_listview.baseadapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -10,6 +11,7 @@ import com.zsl.universal_listview.baseadapter.utils.ViewHolder;
 import com.zsl.universal_listview.entity.UserEntity;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * NewMyAdapter
@@ -22,12 +24,12 @@ public class NewMyAdapter extends UniversalAdapter<UserEntity> {
     }
 
     @Override
-    public void convert(ViewHolder holder, final UserEntity userEntity) {
+    public void convert(ViewHolder holder, final UserEntity userEntity,int position) {
 
         //这里使用链式编程，简化代码
         holder.setImage(R.id.listview_item_iv_icon, userEntity.getIcon())//设置头像
                 .setText(R.id.listview_item_tv_name, userEntity.getName())
-                .setText(R.id.listview_item_tv_sex,userEntity.getSex());
+                .setText(R.id.listview_item_tv_sex, userEntity.getSex());
 
         //设置CheckBox
         final CheckBox cb=holder.getView(R.id.listview_item_cb_checkBox);
@@ -40,5 +42,7 @@ public class NewMyAdapter extends UniversalAdapter<UserEntity> {
                 userEntity.setIsCheck(cb.isChecked());
             }
         });
+        Log.e("test",position+"");
+
     }
 }

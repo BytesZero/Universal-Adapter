@@ -50,11 +50,11 @@ public abstract class UniversalAdapter<T> extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         ViewHolder holder=ViewHolder.get(context,convertView,parent, layoutId);
-        convert(holder,getItem(position));
+        convert(holder,getItem(position),position);
         return holder.getmConvertView();
     }
 
-    public abstract void convert(ViewHolder holder,T t);
+    public abstract void convert(ViewHolder holder,T t,int position);
 
 
 }
